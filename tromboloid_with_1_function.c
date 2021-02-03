@@ -11,7 +11,7 @@ volume()
   int h,d,b,vol;
   printf("enter the input values");
   scanf("%d%d%d",&h,&d,&b);
-  vol=1/3((h*d*b)+(d/b));
+  vol=1/3*((h*d*b)+(d/b));
   printf("%d",vol);
 }
   
