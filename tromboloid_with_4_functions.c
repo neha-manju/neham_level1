@@ -4,7 +4,7 @@
 float input()
 {
 float h;
-printf("enter a value");
+printf("enter a value of height");
 scanf("%f",&h);
 return h;
 }
