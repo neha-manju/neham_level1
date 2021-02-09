@@ -3,12 +3,12 @@
 #include<stdio.h>
 float input()
 {
-float h;
-printf("enter a value of height");
-scanf("%f",&h);
-return h;
+float h,b,d;
+printf("enter the input values");
+scanf("%f%f%f",&h,&b,&d);
+return h,b,d;
 }
-float find_volume(float h,float b,float d)
+float evaluate_volume(float h,float b,float d)
 {
 float volume;
 volume=((h*b*d)+(d/b))/3;
@@ -24,7 +24,7 @@ float p,q,r,v;
 p=input();
 q=input();
 r=input();
-v=find_volume(p,q,r);
+v=evaluate_volume(p,q,r);
 output(p,q,r,v);
 return 0;
 }
