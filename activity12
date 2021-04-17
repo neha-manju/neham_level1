@@ -1,0 +1,111 @@
+#include<stdio.h>
+typedef struct
+{
+	int n;
+	int num[10];
+	int den[10];
+            int final_num;
+            int final_den;
+}fraction;
+
+int input_n()
+{
+   int n;
+   printf("enter the number of test cases");
+   scanf("%d" , &n);
+   return n;
+}
+
+fraction input_fraction()
+{
+  fraction f ; 
+  printf("enter the number of fractions");
+  scanf("%d",&f.n);
+for( int i=0 , i<f.n ; i++)
+{
+  printf("enter the deniminator of the fraction");
+  scanf("%d" , &f.den[i]);
+  f.num[i] = 1;
+  }
+return f;
+}
+ 
+
+void input_n_fraction(int n , fraction f[n])
+{
+  for(int i=0 ; i<n ; i++)
+{
+  f[i] = input_fractions();
+}
+}
+
+int gcd(int a , int b)
+{
+ while(a != b)
+{
+
+if(a>b)
+a -= b;
+else
+b -= a;
+}
+return a;
+}
+ 
+void evaluate_fraction(fraction*f)
+{
+
+  int final_num = 0, final_den = 1 , gcd;
+  for( int i=0 ; i < f->n ; i++)
+{
+  final_den* = f->den[i];
+}
+for(int i=0 ; i<f->n ; i++)
+{
+
+final_num += (f->num[i])*(final_den/f->den[i]);
+
+}
+g=gcd(final_num , final_den);
+f->final_num = final_num/gcd;
+f->final_den = final_den/gcd;
+}
+
+void evaluate_n_fraction(int n , fraction f[n])
+{
+  for( int i=0 ; i<n ; i++)
+{
+   evaluate_fraction(&f[i]);
+}
+}
+
+void output_fraction(int n , fraction f)
+{
+  for(int i=0 ; i<f.n-1 ; i++)
+{
+  printf("%d%d +" , f.num[i] , f.den[i]);
+}
+
+  printf("%d%d=%d/%d" , f.num[f.n-1] , f.den[f.n-1] , f.final_num , f.final_den);
+}
+
+void output_n_fraction(int n , fraction f[n])
+{
+  for(int i=0 ; i<n ; i++)
+{  
+    output_fraction(n , f[i]);
+}
+}
+
+int main()
+{
+  int n ;
+n = input_n();
+fraction f[n];
+input_n_fractions(n , f);
+evalute_n_fractions(n , );
+output_n_fractions(n , f);
+return 0;
+}
+              
+
