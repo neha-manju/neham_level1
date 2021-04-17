@@ -1,0 +1,119 @@
+#include<stdio.h>
+
+typedef struct
+{
+  char name[10];
+  int hours_worked;
+}time_cards;
+
+typedef struct
+{
+ char employee_name[10];
+ float hourly_wage;
+ int n_time_cards;
+ time_cards t[10];
+ float hours_worked;
+ float minutes_worked;
+ float total_time;
+ float gross_pay;
+}employee;
+
+int input_n()
+{
+ int n;
+ printf("enter the number of employees(<=20)");
+scnf("%d" , &n);
+if(n<=20)
+  return n;
+else 
+  printf("wrong input");
+return 0;
+}
+
+employee input_employee()
+{
+ employee e;
+ printf("enter employee's name and hourly wage");
+scanf("%s %f" , &e.employee_name , &e.hourly_wage);
+return e;
+}
+
+void input_n_employee(int n , employee e[n])
+{
+ for(int i=0 ; i<n ; i++)
+{
+ e[i] = input_employee();
+}
+}
+
+time_cards input_time_cards()
+{
+ time_cards t;
+printf("enter the employee's name and corresponding minutes worked");
+scanf("%s%d , &t.name , &t.minutes_worked);
+return t;
+}
+
+void input_n_time_cards(int n , employee e[n])
+{
+ printf("enter the number of time cards");
+scanf("%d",&e->n_time_cards);
+for(int i=0 ; i<e->n_time_cards);
+{
+ e->t[i] = input_time_cards();
+}
+}
+ 
+void evaluate_time_cards(time_cards*t , employee*e)
+{
+if ( strcmp(e->employee_name , t->name) == 0)
+{
+ e->hours_worked = t->minutes_worked/60;
+ e->minutes_worked = t->minutes_worked%60;
+ e->total_time = e->hours_worked+(e->minutes_worked/100);
+if(e->total_time>40)
+ e->gross_pay = 1.5*e->hourly_wage*e->total_time;
+else
+ e->gross_pay = 1*e->hourly_wage*e->total_time;
+}
+}
+
+void evaluate_employee(employee*e)
+{
+ for(int i=0 ; i<e->n_time_cards ; i++)
+{
+ evaluate_time_cards(&e->t[i] , e);
+}
+}
+ 
+void evaluate_n_employee(int n , employee[n])
+{
+ for(int i=0 ; i<n ; i++)
+{
+evaluate_employee(&e[i]);
+}
+}
+
+void output_employee(employee e)
+{
+ peintf("%s: %.2f , %.2f" , e.employee_name , e.hours_worked , e.gross_pay);
+}
+
+void output_n_employee(int n  , employee e[n])
+{
+ for(int i=0 ; i<n ; i++)
+{
+  output_employee(e[i]);
+}
+}
+
+int main()
+{
+ int n ; 
+n = input_n();
+employee e[n];
+input_n_employee(n , e);
+input_n_time_cards(n , e);
+evaluate_n_employee(n , e);
+output_n_employee(n , e);
+}
