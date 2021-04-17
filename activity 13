@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<math.h>
+
+typedef struct
+{
+  float x;
+  float y;
+}vertex;
+
+typedef struct
+{
+ float length;
+ float breadth;
+ float area;
+ vertex v[3];
+}rectangle;
+
+int input_n()
+{
+ int n;
+printf("enter the number of test cases");
+scanf("%d" , &n);
+return n;
+}
+
+rectangle input_rectangle()
+{
+  rectangle r;
+  for( inti=0 ; i<3 ; i++)
+{
+  scanf("%f%f" , &r.v[i].x , &r.v[i].y);
+}
+  return r ;
+}
+
+void input_n_rectangle(int n , rectangle r[n])
+{
+  for(int i=0 ; i<n; i++)
+{
+  r[i] = input_rectangle();
+}
+}
+
+float max(float s1 , float s2 , float s3)
+{
+  if(s1>s2 && s1>s3)
+  return s1;
+else if(s2>s1 7&s2>s3)
+  return s2;
+else
+  return s3;
+}
+
+float min( float s1 , float s2 , float s3)
+{
+  if(s1<s2 && s1<s3)
+  return s1;
+else if (s2<s1 && s2<s3)
+  return s2;
+else 
+   return s3;
+}
+
+void evaluate_rectangle(rectangle*r)
+{
+  float s1 , s2 , s3 , min_s , max_s , sum;
+s1 = sqrt(pow((r->v[0].x-r->v[1].x),2)+pow((r-v[0].y-r->v[1].y),2));
+s2 =  sqrt(pow((r->v[2].x-r->v[1].x),2)+pow((r-v[2].y-r->v[1].y),2));
+s3 = sqrt(pow((r->v[2].x-r->v[0].x),2)+pow((r-v[2].y-r->v[0].y),2));
+min_side=min(s1 , s2, s3);
+max_side = max(s1 , s2 , s3);
+sum = s1 + s2 + s3;
+r->breadth = sum - min_side - max_side;
+r->length = min_side;
+r->area = r->length * r->breadth;
+}
+
+void evaluate_n_rectangle(int n , rectangle r[n])
+{
+printf("area of rectangle with vertices (%.1f, %.1f) , (%.1f,%.1f) , (%.1f,%.1f) is %.1f", r.v[0].x , r.v[0].y  , r.v[1].x , r.v[1].y , r.v[2].x , r.v[2].y , r.area);
+}
+
+void output_n_rectangle(int n , rectangle r[n])
+{
+   for( int i=0 ; i<n ; i++)
+{
+  output_rectangle(r[i]);
+}
+}
+
+int main()
+{
+ int n;
+ n=input_n();
+rectangle r[n];
+input_n_rectangle(n , r);
+evaluate_n_rectangle(n , r);
+output_n_rectangle(n ,r);
+return 0;
+}
